@@ -8,12 +8,21 @@ async function query(queryObject) {
     database: process.env.POSTGRES_DB,
     password: process.env.POSTGRES_PASSWORDS,
   });
-  await client.connect();
+  console.log("Crendenciais do Postgress", {
+    host: process.env.POSTGRES_HOST,
+    port: process.env.POSTGRES_PORT,
+    user: process.env.POSTGRES_USER,
+    database: process.env.POSTGRES_DB,
+    password: process.env.POSTGRES_PASSWORDS,
+  });
+
   try {
+    await client.connect();
     const result = await client.query(queryObject);
     return result;
   } catch (e) {
     console.error(e);
+    throw error;
   } finally {
     await client.end();
   }
