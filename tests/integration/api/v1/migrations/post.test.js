@@ -38,4 +38,21 @@ test("POST TO /API/V1/MIGRATIONS SHOULD RETURN 200", async () => {
 
   expect(Array.isArray(dbMigrations2)).toBe(true);
   expect(dbMigrations2.length).toBeGreaterThan(0);
+
+  const responseDelete = await fetch(
+    "http://localhost:3000/api/v1/migrations",
+    {
+      method: "delete",
+    },
+  );
+
+  expect(responseDelete.status).toBe(405);
+  console.log(await responseDelete.json());
+
+  const responsePut = await fetch("http://localhost:3000/api/v1/migrations", {
+    method: "put",
+  });
+
+  expect(responsePut.status).toBe(405);
+  console.log(await responsePut.json());
 });
