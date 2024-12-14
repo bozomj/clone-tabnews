@@ -1,7 +1,6 @@
 import database from "infra/database.js";
 
 async function status(request, response) {
-  let noto;
   const updatedAT = new Date().toISOString();
 
   const postgresVersion = await database.query({

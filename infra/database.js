@@ -1,14 +1,14 @@
-import { Client, Pool } from "pg";
+import { Client } from "pg";
 
 async function query(queryObject) {
   let client;
   try {
     client = await getNewClient();
     const result = await client.query(queryObject);
-
     return result;
-  } catch (e) {
-    throw e;
+  } catch (error) {
+    console.log(error);
+    throw error;
   } finally {
     await client.end();
   }
@@ -27,7 +27,9 @@ async function getNewClient() {
   return client;
 }
 
-export default {
+const database = {
   query,
   getNewClient,
 };
+
+export default database;
