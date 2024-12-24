@@ -19,7 +19,6 @@
     "lint:eslint:check": "next lint --dir .",
     "prepare": "husky",
     "commit": "cz"
-    
   },
   "author": "",
   "license": "MIT",

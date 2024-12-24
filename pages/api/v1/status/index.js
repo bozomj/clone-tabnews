@@ -10,7 +10,6 @@ async function status(request, response) {
 
   const dbName = process.env.POSTGRES_DB;
   const usedConnections = await database.query({
-    
     text: "select count(*) as used_connections from pg_stat_activity where datname = $1;",
     values: [dbName],
   });
