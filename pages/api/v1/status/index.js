@@ -14,13 +14,17 @@ async function status(request, response) {
     values: [dbName],
   });
 
-  console.log(`Banco de dados selecionado é: ${dbName}`);
-
   response.status(200).json({
     updated_at: updatedAT,
-    postgres_version: postgresVersion.rows[0].server_version,
-    max_connections: parseInt(postgresMaxConnections.rows[0].max_connections),
-    used_connections: parseInt(usedConnections.rows[0].used_connections),
+    dependencies: {
+      database: {
+        postgres_version: postgresVersion.rows[0].server_version,
+        max_connections: parseInt(
+          postgresMaxConnections.rows[0].max_connections,
+        ),
+        used_connections: parseInt(usedConnections.rows[0].used_connections),
+      },
+    },
   });
 }
 

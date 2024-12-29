@@ -16,9 +16,13 @@ describe("GET /api/v1/status", () => {
       const parsedUpdatedAt = new Date(responseBody.updated_at).toISOString();
 
       expect(responseBody.updated_at).toEqual(parsedUpdatedAt);
-      expect(responseBody.postgres_version).toContain("16.0");
-      expect(responseBody.max_connections).toEqual(expect.any(Number));
-      expect(responseBody.used_connections).toEqual(1);
+      expect(responseBody.dependencies.database.postgres_version).toContain(
+        "16.0",
+      );
+      expect(responseBody.dependencies.database.max_connections).toEqual(
+        expect.any(Number),
+      );
+      expect(responseBody.dependencies.database.used_connections).toEqual(1);
     });
   });
 });
