@@ -24,39 +24,44 @@ function UpdatedAt() {
   });
 
   let UpdatedAtText = "Carregando...";
-  console.log(data);
 
-  if (!isLoading && data)
+  if (!isLoading && data) {
     UpdatedAtText = new Date(data.updated_at).toLocaleString("pt-BR");
+  }
 
   return <div>Última atualização: {UpdatedAtText}</div>;
 }
 
 function DatabaseInfo() {
   const { isLoading, data } = useSWR("/api/v1/status", fetchAPI, {
-    refreshInterval: 4000,
+    refreshInterval: 2000,
   });
 
   let dbInfo = null;
-
+  let databaseInfo = "Carregando...";
   if (!isLoading) {
     dbInfo = data.dependencies.database;
+    databaseInfo = (
+      <>
+        <li>
+          Versão: <b>{dbInfo?.postgres_version}</b>{" "}
+        </li>
+        <li>
+          Máximas conexões suportada: <b>{dbInfo?.max_connections}</b>
+        </li>
+        <li>
+          Conexões em uso: <b>{dbInfo?.used_connections}</b>
+        </li>
+      </>
+    );
   }
 
   return (
     <ul>
       <div>
-        <b>Banco de Dados:</b>
+        <b>Banco de Dados: </b>
       </div>
-      <li>
-        Versão: <b>{dbInfo?.postgres_version}</b>{" "}
-      </li>
-      <li>
-        Máximas conexões suportada: <b>{dbInfo?.max_connections}</b>
-      </li>
-      <li>
-        Conexões em uso: <b>{dbInfo?.used_connections}</b>
-      </li>
+      {databaseInfo}
     </ul>
   );
 }
