@@ -3,6 +3,7 @@ import { resolve } from "node:path";
 import database from "infra/database.js";
 
 export default async function migrations(request, response) {
+  // const allowedMethods = ["GET", "POST"];
   const valueDryRun = checkMethod(request.method);
   if (valueDryRun === null) {
     return await response.status(405).json({

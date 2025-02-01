@@ -1,0 +1,19 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5em;
+    /* color: white; */
+    font-weight: bold;
+
+}
+.header div{
+    
+}
+.header ul {
+    display: flex;
+    text-decoration: none;
+    list-style: none;
+    gap: 0.5em;
+    
+
+}
