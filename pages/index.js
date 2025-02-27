@@ -20,9 +20,7 @@ function Header() {
         <div>
           <ul>
             <li>Home</li>
-            <li>
-              <a href="/status">Status</a>
-            </li>
+            <li>Status</li>
             <li>About</li>
             <li>Skills</li>
             <li>Portfolio</li>

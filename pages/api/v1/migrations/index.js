@@ -58,17 +58,3 @@ async function postHandler(request, response) {
     await dbClient.end();
   }
 }
-
-function checkMethod(method) {
-  let value = null;
-
-  switch (method) {
-    case "POST":
-      value = false;
-      break;
-    case "GET":
-      value = true;
-      break;
-  }
-  return value;
-}
