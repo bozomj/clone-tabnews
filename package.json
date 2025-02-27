@@ -4,6 +4,7 @@
   "description": "estudo para o curso.dev -  tabnews",
   "main": "index.js",
   "scripts": {
+    
     "dev": "npm run services:up && npm run services:wait:database && npm run migrations:up && bash -c 'trap \"npm run services:stop; exit 0\" SIGINT; next dev'",
     "postdev": "npm run services:stop",
     "test": "npm run services:up  && concurrently  --n next,jest --hide next -k -s command-jest \"next dev\" \"jest --runInBand --verbose\"",
