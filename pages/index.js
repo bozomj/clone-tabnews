@@ -1,33 +1,12 @@
-import styles from "../styles/header.module.css";
-
 function Home() {
   return (
-    <>
-      <Header />
-    </>
+    <di>
+      <h1>
+        &quot; Aceite as coisas às quais o destino une você, e ame as pessoas
+        com quem o destino o reuniu, mas faça isso de todo o coração blz &quot;
+      </h1>
+    </di>
   );
 }
 
 export default Home;
-
-function Header() {
-  return (
-    <>
-      <nav className={styles.header}>
-        <div>
-          <a>Bzmj</a>
-        </div>
-        <div>
-          <ul>
-            <li>Home</li>
-            <li>Status</li>
-            <li>About</li>
-            <li>Skills</li>
-            <li>Portfolio</li>
-            <li>Contact</li>
-          </ul>
-        </div>
-      </nav>
-    </>
-  );
-}
