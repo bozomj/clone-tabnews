@@ -3,6 +3,12 @@ import bcryptjs from "bcryptjs";
 const pepper = process.env.PEPPER;
 
 async function hash(password) {
+  if (password == undefined) {
+    throw {
+      message: "Senha nao definida",
+      cause: password,
+    };
+  }
   const rounds = getNumberOfRounds();
 
   return await bcryptjs.hash(password + pepper, rounds);
