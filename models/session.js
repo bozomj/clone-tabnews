@@ -1,6 +1,6 @@
+import crypto from "node:crypto";
 import database from "infra/database";
 import { UnauthorizedError } from "infra/errors";
-import crypto from "node:crypto";
 
 const EXPIRATION_IN_MILLISECONDS = 30 * 24 * 60 * 60 * 1000; // 30 Days
 
@@ -63,7 +63,7 @@ async function create(userId) {
 async function renew(sessionId) {
   const expiresAt = new Date(Date.now() + EXPIRATION_IN_MILLISECONDS);
 
-  const renewedSessionObject = runUpdateQuery(sessionId, expiresAt);
+  const renewedSessionObject = await runUpdateQuery(sessionId, expiresAt);
   return renewedSessionObject;
 
   async function runUpdateQuery(sessionId, expiresAt) {
