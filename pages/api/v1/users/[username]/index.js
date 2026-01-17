@@ -4,6 +4,8 @@ import user from "models/user.js";
 
 const router = createRouter();
 
+
+
 router.get(getHandler);
 router.patch(patchHandler);
 
