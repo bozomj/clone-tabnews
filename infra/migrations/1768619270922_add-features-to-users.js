@@ -1,0 +1,15 @@
+/* eslint-disable camelcase */
+
+exports.shorthands = undefined;
+
+exports.up = (pgm) => {
+  pgm.addColumn("users", {
+    features: {
+      type: "varchar[]",
+      notNull: true,
+      default: "{}",
+    },
+  });
+};
+
+exports.down = false;
