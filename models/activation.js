@@ -4,9 +4,9 @@ import webserver from "infra/webserver";
 
 const EXPIRATION_IN_MILLISECONDS = 60 * 15 * 1000; // 15 MINUTOS;
 
-async function findOneByUserId(userId) {
-  const newToken = await runSelectQuery(userId);
-  return newToken;
+async function findOneValidById(tokenId) {
+  const activationTokenObject = await runSelectQuery(tokenId);
+  return activationTokenObject;
 
   async function runSelectQuery(userId) {
     const results = await database.query({
@@ -16,7 +16,9 @@ async function findOneByUserId(userId) {
       FROM
         user_activation_tokens
       WHERE
-        user_id = $1
+        id = $1
+        AND expires_at > NOW()
+        AND used_at IS NULL
       LIMIT
         1
       ;`,
@@ -67,7 +69,7 @@ Equipe Bzmj`,
 const activation = {
   create,
   sendEmailToUser,
-  findOneByUserId,
+  findOneValidById,
 };
 
 export default activation;
