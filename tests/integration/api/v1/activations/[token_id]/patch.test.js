@@ -19,7 +19,6 @@ describe("PATCH /api/v1/activations[token_id]", () => {
         },
       );
 
-      console.log(response.status);
       expect(response.status).toBe(404);
 
       const responseBody = await response.json();
@@ -141,6 +140,7 @@ describe("PATCH /api/v1/activations[token_id]", () => {
       expect(activatedUser.features).toEqual([
         "create:session",
         "read:session",
+        "update:user",
       ]);
     });
 

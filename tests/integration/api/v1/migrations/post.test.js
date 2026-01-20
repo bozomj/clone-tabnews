@@ -31,7 +31,7 @@ describe("POST /api/v1/migrations", () => {
         );
 
         expect(responseDelete.status).toBe(405);
-        console.log(await responseDelete.json());
+        await responseDelete.json();
 
         const responsePut = await fetch(
           "http://localhost:3000/api/v1/migrations",
@@ -41,7 +41,7 @@ describe("POST /api/v1/migrations", () => {
         );
 
         expect(responsePut.status).toBe(405);
-        console.log(await responsePut.json());
+        await responsePut.json();
       });
 
       test("For the second time", async () => {
