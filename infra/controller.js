@@ -63,13 +63,11 @@ async function clearSessionCookie(response) {
 }
 
 async function injectAnonymousOrUser(request, response, next) {
-  //1 se o cookie session.id existe, injetar usuário
   if (request.cookies?.session_id) {
     await injectAuthenticatedUser(request);
     return next();
   }
 
-  //2 se nao existir. injetar usuario anonimo.
   injectAnonymousUser(request);
   return next();
 }
@@ -106,7 +104,7 @@ function canRequest(feature) {
 
     throw new ForbiddenError({
       message: "Você não possui permissão para executar esta ação.",
-      action: `Verifique se o seu usuário a featur "${feature}"`,
+      action: `Verifique se o seu usuário possui a feature "${feature}"`,
     });
   };
 }
