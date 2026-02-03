@@ -361,6 +361,7 @@ describe("PATCH /api/v1/users/[username]", () => {
         password: responseBody.password,
         created_at: responseBody.created_at,
         updated_at: responseBody.updated_at,
+        updated_by: responseBody.updated_by,
       });
 
       expect(uuidVersion(responseBody.id)).toBe(4);
