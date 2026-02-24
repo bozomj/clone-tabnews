@@ -44,7 +44,7 @@ function DatabaseInfo() {
     databaseInfo = (
       <>
         <li>
-          Versão: <b>{dbInfo?.postgres_version}</b>{" "}
+          Versão: <b>{dbInfo?.version}</b>{" "}
         </li>
         <li>
           Máximas conexões suportada: <b>{dbInfo?.max_connections}</b>
